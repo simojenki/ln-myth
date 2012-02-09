@@ -17,7 +17,7 @@ os.chdir(options.destdir)
 
 db = MySQLdb.connect(host="localhost", port=3306, user=options.user, passwd=options.password, db="mythconverg")
 cursor = db.cursor()
-cursor.execute("select starttime, title, basename from recorded where basename like '%mpg'")
+cursor.execute("select starttime, title, basename from recorded where basename like '%mpg' and storagegroup != 'LiveTV'")
 recordings = [[recording[2], "%s %s.mpg" % (recording[0], recording[1])] for recording in cursor.fetchall()]
 db.close
 
