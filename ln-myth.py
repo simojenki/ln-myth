@@ -27,6 +27,6 @@ for toDelete in set(os.listdir(options.destdir)) - set([recording[1] for recordi
 for recording in recordings :
 	mythRecording = os.path.join(options.recordingsdir, recording[0])
 	if os.path.isfile(mythRecording):
-		if not(os.path.isfile(recording[1])) : os.link(os.path.join(options.recordingsdir, recording[0]), recording[1]) 	
+		if not(os.path.isfile(recording[1])) : os.link(os.path.join(options.recordingsdir, recording[0]), recording[1].replace("/", " ")) 	
 	else:
 		print "Error %s, %s recording isn't actually on the disk!!" % (mythRecording, recording[1])
